@@ -1,2 +1,2 @@
 # LoL2Excel
-inspired by http://i.imgur.com/Ey6tZPf.png - auto creates most parts of the table
+inspired by https://redd.it/3kja2x - auto creates most parts of the table
