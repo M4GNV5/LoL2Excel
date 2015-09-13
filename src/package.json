@@ -1,0 +1,16 @@
+{
+    "name": "LoL2Excel",
+    "version": "0.0.1",
+    "description": "inspired by https://redd.it/3kja2x - auto creates most parts of the table",
+    "repository": "https://github.com/M4GNV5/LoL2Excel.git",
+    "homepage": "https://github.com/M4GNV5/LoL2Excel",
+    "author": "Jakob Löw <eragonjml@googlemail.com>",
+    "dependencies": {
+        "node-xlsx": "^0.6.0",
+        "excel-export": "^0.4.1",
+        "request": "^2.61.0",
+        "mathjs": "^2.2.0",
+        "moment": "2.10.6"
+    },
+    "main": "main.js"
+}
