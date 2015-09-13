@@ -9,7 +9,6 @@ function checkError(e)
 {
     if(e)
     {
-        throw e;
         console.log(e.message || e.toString() || "Unknown Error");
         process.exit(1);
     }
