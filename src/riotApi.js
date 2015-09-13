@@ -8,6 +8,7 @@ function api(config, key)
 
 api.prototype.makeRequest = function(url, cb)
 {
+    url = encodeURI(url);
     request(url, function (err, res, body)
     {
 		if(err || res.statusCode != 200)
