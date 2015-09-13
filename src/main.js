@@ -116,7 +116,7 @@ function main()
             format.summonerSpell1 = cache.summonerSpells[game.spell1Id]
             format.summonerSpell2 = cache.summonerSpells[game.spell2Id];
             format.champion = cache.champions[game.championId];
-            format.result = stats.winner ? "win" : "loose";
+            format.result = stats.winner ? "win" : "lose";
             format.time = games[i].matchCreation;
             format.duration = game.matchDuration;
             format.durationMin = Math.floor(games[i].matchDuration / 60);
@@ -140,11 +140,11 @@ function main()
             for(var ii = 0; ii < row.length; ii++)
             {
                 var content = formatColumn(row[ii], format);
-                if(cols[ii].math)
+                if(content[0] == "=")
                 {
                     try
                     {
-                        content = math.eval(content);
+                        content = math.eval(content.substr(1));
                     }
                     catch (e)
                     {
