@@ -1,6 +1,5 @@
 var fs = require("fs");
 var xlsx = require("node-xlsx");
-var excel = require("excel-export");
 var math = require("mathjs");
 var moment = require("moment");
 var RiotApi = require("./riotApi");
