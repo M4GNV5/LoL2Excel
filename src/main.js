@@ -46,6 +46,7 @@ catch(e)
         cache.summonerId = result.id;
         cache.summonerName = result.name;
         cache.renderedGames = [];
+        cache.games = [];
 
         var cacheTimes = 3;
         function cachedOne()
@@ -86,10 +87,23 @@ function main()
     var rows;
     try
     {
-        var rows = xlsx.parse(config.outputFile)[0].data.slice(1) || [];
+        var rows = xlsx.parse(config.outputFile)[0].data;
+        /*workbook = xlsx.readFile(config.outputFile);
+        fs.writeFileSync("dump.json", JSON.stringify(workbook, undefined, 4));
+        var sheet = workbook.Sheets[config.outputName] || workbook.Sheets[workbook.SheetNames[0]] || {};
+        for(var key in sheet)
+        {
+            if(key[0] == '!')
+                continue;
+            var x = key.charCodeAt(0) - 65;
+            var y = parseInt(key.substr(1)) - 1;
+            rows[y] = rows[y] || [];
+            rows[y][x] = sheet[key].v;
+        }*/
     }
     catch(e)
     {
+        console.log("Error reading output file assuming it to be empty / not existent");
         rows = [];
     }
 
@@ -99,7 +113,6 @@ function main()
 
         var games = result.matches;
 
-        var cols = config.columnBluePrint;
         for(var i = 0; i < games.length; i++)
         {
             if(cache.renderedGames.indexOf(games[i].matchId) !== -1)
@@ -117,7 +130,7 @@ function main()
             format.summonerSpell2 = cache.summonerSpells[game.spell2Id];
             format.champion = cache.champions[game.championId];
             format.result = stats.winner ? "win" : "lose";
-            format.time = games[i].matchCreation;
+            format.time = moment(new Date(games[i].matchCreation)).format(config.timeFormat);
             format.duration = game.matchDuration;
             format.durationMin = Math.floor(games[i].matchDuration / 60);
             var durationSec = games[i].matchDuration % 60;
@@ -151,10 +164,6 @@ function main()
                         checkError(e);
                     }
                 }
-                if(cols[ii].type == "date")
-                {
-                    content = moment(new Date(parseInt(content))).format(config.timeFormat);
-                }
 
                 row[ii] = content;
             }
@@ -162,14 +171,8 @@ function main()
             cache.renderedGames.push(games[i].matchId);
         }
 
-        for(var i = 0; i < cols.length; i++)
-            if(cols[i].type == "date")
-                cols[i].type = "string";
-
-        var excelResult = excel.execute({stylesXmlFile: config.stylesXmlFile, cols: cols, rows: rows});
-
-        var write = fs.createWriteStream(config.outputFile);
-        write.end(excelResult, "binary");
+        var buff = xlsx.build([{name: config.outputName, data: rows}]);
+        fs.writeFileSync(config.outputFile, buff);
 
         fs.writeFileSync("./src/cache.json", JSON.stringify(cache, undefined, 4));
     });

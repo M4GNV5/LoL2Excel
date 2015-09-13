@@ -1,6 +1,6 @@
 {
-    "summonerName": "Shiroè",
-    "region": "eune",
+    "summonerName": "TH3L1TTL3M4GNV5",
+    "region": "euw",
     "outputFile": "matches.xlsx",
     "outputName": "Recent LoL matches",
     "rankedOnly": true,
@@ -8,18 +8,6 @@
 
     "timeFormat": "DD MMM, hh:mm a",
 
-    "columnBluePrint": [
-        {"caption": "Date", "type": "date", "width": 18},
-        {"caption": "Duration", "type": "string"},
-        {"caption": "Result", "type": "string"},
-        {"caption": "CS", "type": "number"},
-        {"caption": "Stats", "type": "string"},
-        {"caption": "KDA", "type": "number"},
-        {"caption": "Champion", "type": "string", "width": 18},
-        {"caption": "Summoner Spells", "type": "string", "width": 18},
-        {"caption": "Learnt", "type": "string", "width": 18},
-        {"caption": "Items", "type": "string", "width": 200}
-    ],
     "rowBluePrint": [
         "{time}",
         "{durationMin}:{durationSec}",
