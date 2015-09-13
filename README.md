@@ -14,10 +14,11 @@ inspired by https://redd.it/3kja2x - auto creates most parts of the table
 - `caption` text to display in the first row
 - `type` can be string, bool, number, date
 - `width` width of the column
-- `math` if true formatted content will be executed as math instructions (e.g. `sin({stats.kills}) * 42` would write the sine of our kills multiplicated with 42 to the table)
 
 ##Formatting
 you can insert data from the game using {name} where name can be one of the following
+
+if the first character is a = it will pass the text to mathjs for calculating e.g. KDAs etc. (e.g. `sin({stats.kills}) * 42` would write the sine of your kills multiplicated with 42 to the table)
 - `id` game id
 - `summonerSpell1` name of first summoner spell
 - `summonerSpell2` name of second summoner spell
