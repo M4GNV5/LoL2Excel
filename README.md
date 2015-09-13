@@ -7,13 +7,7 @@ inspired by https://redd.it/3kja2x - auto creates most parts of the table
 - `outputFile` xlsx file to output table to
 - `rankedOnly` when true will only put ranked games in the table
 - `timeFormat` format for colums of type date (see http://momentjs.com/docs/#/displaying/)
-- `columnBluePrint` captions and data types for column
 - `rowBluePrint` text inserted in all the rows (see below for formatting)
-
-##Column definition
-- `caption` text to display in the first row
-- `type` can be string, bool, number, date
-- `width` width of the column
 
 ##Formatting
 you can insert data from the game using {name} where name can be one of the following
